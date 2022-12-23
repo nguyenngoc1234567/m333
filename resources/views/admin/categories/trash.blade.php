@@ -23,17 +23,27 @@
                         <td>{{ $category->name }}</td>
 
                         <td>
-                            <form action="" method="POST">
-                                @csrf
-                                @method('put')
-                                <button type="submit" class="btn btn-success">Khôi Phục</button>
-                                <a data-href="" id="{{ $category->id }}" class="btn btn-danger">Xóa</a>
 
+
+                            <form action="{{ route('category_destroy', $category->id) }}" method="post" >
+                                @method('DELETE')
+                                @csrf
+
+                                <button onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?');"
+                                    class ='btn btn-danger'  type="submit" >Xoá</button>
                             </form>
+                            <form action="{{ route('category.restoredelete', $category->id) }}" method="post">
+                            @method('PUT')
+                            @csrf
+                            <button onclick="return confirm('Bạn có chắc muốn khôi phục danh mục này không?');"
+                            class ='btn btn-info'  type="submit" >Khôi phục</button>
+                        </form>
                         </td>
                 @endforeach
             </tbody>
         </table>
         {{-- <tr>{{ $categories->appends(request()->query()) }}</tr> --}}
     </div>
+
+
 @endsection

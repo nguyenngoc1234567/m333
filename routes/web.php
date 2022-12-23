@@ -60,10 +60,12 @@ Route::post('/store', [CategoryController::class, 'store'])->name('categories.st
 Route::get('/show/{id}', [CategoryController::class, 'show'])->name('categories.show');
 Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
-Route::delete('destroy/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+// Route::delete('destroy/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 // xoa meemf
 Route::put('/softdeletes/{id}', [CategoryController::class, 'softdeletes'])->name('category.softdeletes');
 Route::get('/trash', [CategoryController::class, 'trash'])->name('category.trash');
+Route::put('/restoredelete/{id}', [CategoryController::class, 'restoredelete'])->name('category.restoredelete');
+Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category_destroy');
 
 
 

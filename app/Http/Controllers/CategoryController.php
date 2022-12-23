@@ -64,8 +64,9 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
+        $category=Category::onlyTrashed()->findOrFail($id);
+        $category->forceDelete();
+
         //dung session de dua ra thong bao
 
         return redirect()->route('categories.index');
@@ -87,5 +88,15 @@ class CategoryController extends Controller
         $param = ['categories'=> $categories];
         return view('admin.categories.trash', $param);
     }
+    public function restoredelete($id){
+        // $this->authorize('restore', Category::class);
+        $categories=Category::withTrashed()->where('id', $id);
+        $categories->restore();
+        return redirect()->route('category.trash');
+
+
+    }
+    
+
 
 }
