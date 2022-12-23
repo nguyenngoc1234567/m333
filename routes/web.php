@@ -94,7 +94,6 @@ Route::delete('destroy-productcode/{id}', [product_codesController::class, 'dest
 
 
 
-
 Route::get('/orders', [OrdersController::class, 'index'])->name('orders.index');
 Route::get('/create-orders', [OrdersController::class, 'create'])->name('orders.create');
 Route::post('/store-orders', [OrdersController::class, 'store'])->name('orders.store');
@@ -103,7 +102,7 @@ Route::get('/edit-orders/{id}', [OrdersController::class, 'edit'])->name('orders
 Route::put('/update-orders/{id}', [OrdersController::class, 'update'])->name('orders.update');
 Route::delete('destroy-orders/{id}', [OrdersController::class, 'destroy'])->name('orders.destroy');
 
-
+//gmaiil
 Route::post('/email', [UserController::class, 'quenmatkhau'])->name('quenmatkhau');
 Route::get('/form', [UserController::class, 'viewquenmatkhau'])->name('view.quenmatkhau');
 
