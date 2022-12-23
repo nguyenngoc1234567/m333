@@ -26,8 +26,8 @@ class shopController extends Controller
     }
     public function cart()
     {
-        $products = Product::pagigate(4);
-        $categories = Category::pagigate(4);
+        $products = Product::get();
+        $categories = Category::all();
         $param = [
             'products' => $products,
             'categories' => $categories,
