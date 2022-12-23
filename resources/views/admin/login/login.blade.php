@@ -152,7 +152,7 @@
 </style>
 
 <div class="overlay">
-    <form action="{{ route('shop.checklogin') }}" method="post">
+    <form action="{{ route('handdle-login') }}" method="post">
         @csrf
         <div class="con">
             <header class="head-form">

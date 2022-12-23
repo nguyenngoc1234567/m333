@@ -4,14 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
 
     public function index()
     {
-        $categories =  Category::all();
+        if (Auth::check()) {
+            // nếu đăng nhập thàng công thì
+            $categories =  Category::all();
         return view('admin.categories.index',compact('categories'));
+        } else {
+            return redirect()->route('login');
+        }
+
     }
 
 
@@ -62,6 +69,23 @@ class CategoryController extends Controller
         //dung session de dua ra thong bao
 
         return redirect()->route('categories.index');
-    
+
     }
+    //xoa mem
+    public  function softdeletes($id){
+        // $this->authorize('delete', Category::class);
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $category = Category::findOrFail($id);
+        $category->deleted_at = date("Y-m-d h:i:s");
+        $category->save();
+        return redirect()->route('categories.index');
+    }
+    public  function trash(){
+        // dd(123);
+        // $this->authorize('viewtrash', Category::class);
+        $categories = Category::onlyTrashed()->get();
+        $param = ['categories'=> $categories];
+        return view('admin.categories.trash', $param);
+    }
+
 }

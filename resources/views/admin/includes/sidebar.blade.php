@@ -27,6 +27,7 @@
           </li>
 
 
+
         </ul>
       </li><!-- End Components Nav -->
 
@@ -47,9 +48,9 @@
             </a>
           </li>
           <li>
-            {{-- <a href="forms-validation.html">
-              <i class="bi bi-circle"></i><span>Form Validation</span>
-            </a> --}}
+            <a href="{{ route('category.trash') }}">
+              <i class="bi bi-circle"></i><span>Trash</span>
+            </a>
           </li>
         </ul>
       </li><!-- End Forms Nav -->

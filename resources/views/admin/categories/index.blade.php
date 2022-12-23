@@ -23,12 +23,17 @@
             <th scope="row">{{$key+1}}</th>
             <td>{{ $team->name }}</td>
             <td>
-                    <form action="{{route('categories.destroy',[$team->id])}}" method="post">
-                        @method('DELETE')
-                        @csrf
-                        <button onclick="return confirm('Bạn có chắc chắn xóa không?');" class="btn btn-danger">Xóa</button>
-                        <a href="{{route('categories.edit',[$team->id])}}" class="btn btn-primary">Sửa</a>
-                    </form>
+                <form action="{{ route('category.softdeletes', $team->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                <td>
+
+                        <button type="submit" class="btn btn-success"
+                        onclick="return confirm('Chuyên vào thùng rác')">Xóa</button>
+
+                    <a href="{{route('categories.edit',[$team->id])}}" class="btn btn-primary">Sửa</a>
+                </td>
+                </form>
             </td>
           </tr>
          @endforeach

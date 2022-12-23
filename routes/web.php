@@ -23,6 +23,8 @@ use App\Models\Category;
 |
 */
 
+
+
 Route::get('index', function () {
     return view('shop.shop');
 });
@@ -43,8 +45,6 @@ Route::get('dangki', function () {
     return view('admin.login.dangki');
 });
 
-
-
 Route::post('/shoplogout', [UserController::class, 'logout'])->name('shoplogout');
 
 Route::get('/viewlogin', [UserController::class, 'viewlogin'])->name('viewlogin');
@@ -61,6 +61,10 @@ Route::get('/show/{id}', [CategoryController::class, 'show'])->name('categories.
 Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('destroy/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+// xoa meemf
+Route::put('/softdeletes/{id}', [CategoryController::class, 'softdeletes'])->name('category.softdeletes');
+Route::get('/trash', [CategoryController::class, 'trash'])->name('category.trash');
+
 
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -94,37 +98,28 @@ Route::delete('destroy-orders/{id}', [OrdersController::class, 'destroy'])->name
 Route::post('/email', [UserController::class, 'quenmatkhau'])->name('quenmatkhau');
 Route::get('/form', [UserController::class, 'viewquenmatkhau'])->name('view.quenmatkhau');
 
-Route::prefix('admin')->group(function () {
-    //đăng nhập
-    Route::get('/login',[AdminController::class,'formlogin'])->name('formlogin');
-    Route::post('/adminlogin',[AdminController::class,'login'])->name('admin.login');
-    //đăng kí
-    Route::get('/register',[AdminController::class,'formregister'])->name('formregister');
-    Route::post('/adminregister',[AdminController::class,'register'])->name('admin.register');
-    //đăng xuất
-    Route::get('/logout',[AdminController::class,'logout'])->name('logout');
-});
+//
 
 
-Route::get('hasOne', function () {
-    $item = Product::find(5);
-    dd($item);
-});
+// Route::get('hasOne', function () {
+//     $item = Product::find(5);
+//     dd($item);
+// });
 
 
-Route::get('hasOneInverse', function () {
-    $item = Product::find(6);
-    dd($item);
-});
+// Route::get('hasOneInverse', function () {
+//     $item = Product::find(6);
+//     dd($item);
+// });
 
-Route::get('hasMany', function () {
-});
+// Route::get('hasMany', function () {
+// });
 
-Route::get('hasInverse', function () {
-});
+// Route::get('hasInverse', function () {
+// });
 
-Route::get('manyManyProducts', function () {
-});
+// Route::get('manyManyProducts', function () {
+// });
 
-Route::get('manyManyOrders', function () {
-});
+// Route::get('manyManyOrders', function () {
+// });

@@ -1,5 +1,6 @@
 <style>
     @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+
     /* End Fonts */
     /* Start Global rules */
     * {
@@ -7,6 +8,7 @@
         margin: 0;
         box-sizing: border-box;
     }
+
     /* End Global rules */
     /* Start body rules */
     body {
@@ -20,6 +22,7 @@
         opacity: .95;
         /* background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%); */
     }
+
     /* |||||||||||||||||||||||||||||||||||||||||||||*/
     /* //////////////////////////////////////////// */
     /* End body rules */
@@ -34,6 +37,7 @@
         padding: 2%;
         background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
     }
+
     /* form Container */
     form .con {
         display: -webkit-flex;
@@ -44,21 +48,25 @@
         flex-wrap: wrap;
         margin: 0 auto;
     }
+
     /* the header form form */
     header {
         margin: 2% auto 10% auto;
         text-align: center;
     }
+
     /* Login title form form */
     header h2 {
         font-size: 250%;
         font-family: 'Playfair Display', serif;
         color: #3e403f;
     }
+
     /*  A welcome message or an explanation of the login form */
     header p {
         letter-spacing: 0.05em;
     }
+
     /* //////////////////////////////////////////// */
     /* //////////////////////////////////////////// */
     .input-item {
@@ -67,6 +75,7 @@
         padding: 14.5px 0px 15px 9px;
         border-radius: 5px 0px 0px 5px;
     }
+
     /* Show/hide password Font Icon */
     #eye {
         background: #fff;
@@ -82,6 +91,7 @@
         z-index: 5;
         cursor: pointer;
     }
+
     /* inputs form  */
     input[class="form-input"] {
         width: 240px;
@@ -96,13 +106,16 @@
         border-radius: 0px 5px 5px 0px;
         transition: 0.2s linear;
     }
+
     input[id="txt-input"] {
         width: 380px;
     }
+
     input:focus {
         transform: translateX(-2px);
         border-radius: 5px;
     }
+
     button {
         display: inline-block;
         color: #252537;
@@ -119,40 +132,48 @@
         margin: 7% auto;
         letter-spacing: 0.05em;
     }
+
     /* Submits */
     .submits {
         width: 48%;
         display: inline-block;
     }
+
     /*       Forgot Password button FAF3DD  */
     .frgt-pass {
         background: transparent;
     }
+
     /*     Sign Up button  */
     .sign-up {
         background: #B8F2E6;
     }
+
     /* buttons hover */
     button:hover {
         transform: translatey(3px);
         box-shadow: none;
     }
+
     /* buttons hover Animation */
     button:hover {
         animation: ani9 0.4s ease-in-out infinite alternate;
     }
+
     @keyframes ani9 {
         0% {
             transform: translateY(3px);
         }
+
         100% {
-            transform: translateY(5px);z
+            transform: translateY(5px);
+            z
         }
     }
 </style>
 
 <div class="overlay">
-    <form action="{{route('quenmatkhau')}}" method="post">
+    <form action="{{ route('quenmatkhau') }}" method="post">
         @csrf
         <div class="con">
             <header class="head-form">
@@ -164,13 +185,11 @@
                 Email
                 <input class="form-input" id="txt-input" type="email" name="email" required="Nhập email">
                 @error('email')
-                <div style="color: red">{{$message}}</div>
-        @enderror
+                    <div style="color: red">{{ $message }}</div>
+                @enderror
 
 
-            <button class="btn submits sign-up">Đăng nhập<i class="fa fa-user-plus" ></i></button>
-        </div>
+                <button class="btn submits sign-up">Đăng nhập<i class="fa fa-user-plus"></i></button>
+            </div>
     </form>
 </div>
-
-
