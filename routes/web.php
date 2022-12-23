@@ -66,8 +66,8 @@ Route::put('/softdeletes/{id}', [CategoryController::class, 'softdeletes'])->nam
 Route::get('/trash', [CategoryController::class, 'trash'])->name('category.trash');
 Route::put('/restoredelete/{id}', [CategoryController::class, 'restoredelete'])->name('category.restoredelete');
 Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category_destroy');
-
-
+// tìm kiếm
+Route::get('categories/search', [CategoryController::class, 'search'])->name('categories.search');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/create-products', [ProductController::class, 'create'])->name('products.create');

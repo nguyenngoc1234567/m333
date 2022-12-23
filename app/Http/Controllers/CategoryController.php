@@ -96,7 +96,16 @@ class CategoryController extends Controller
 
 
     }
-    
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        if (!$search) {
+            return redirect()->route('category.index');
+        }
+        $categories = Category::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
+        return view('admin.category.index', compact('categories'));
+    }
+
 
 
 }
