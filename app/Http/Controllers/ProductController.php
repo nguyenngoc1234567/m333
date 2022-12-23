@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products =  Product::all();
+        $products =  Product::paginate(4);
         return view('admin.products.index',compact('products'));
     }
 
@@ -140,5 +140,15 @@ class ProductController extends Controller
 
 
         return redirect()->route('products.index');
+    }
+    public function search(Request $request)
+    {
+
+        $search = $request->input('product');
+        if (!$search) {
+            return redirect()->route('category.index');
+        }
+        $product = Product::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
+        return view('shop.shop', compact('product'));
     }
 }

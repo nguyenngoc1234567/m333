@@ -105,7 +105,11 @@
               <ul class="nav navbar-nav navbar-right right_nav pull-right">
                 <li class="nav-item">
                   <a href="#" class="icons">
-                    <i class="ti-search" aria-hidden="true"></i>
+
+
+                   
+
+
                   </a>
                 </li>
 

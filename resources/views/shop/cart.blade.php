@@ -88,5 +88,6 @@
 
             <a href="{{ route('checkOuts') }}" class="btn btn-danger pull-right">Thanh toán</a>
         </div>
+        
 </div>
 @endsection

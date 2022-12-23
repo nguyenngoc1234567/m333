@@ -13,18 +13,21 @@ class shopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $product = Product::get();
-        $param =[
-            'product'=> $product
-          ];
-        return view('shop.shop',$param );
+        $search = $request->input('product');
+        if ($search) {
+            $products = Product::where('name', 'LIKE', '%' . $search . '%')->get();
+        }
+        else{
+            $products = Product::get();
+        }
+        return view('shop.shop', compact('products'));
     }
     public function cart()
     {
-        $products = Product::get();
-        $categories = Category::all();
+        $products = Product::pagigate(4);
+        $categories = Category::pagigate(4);
         $param = [
             'products' => $products,
             'categories' => $categories,
@@ -123,5 +126,15 @@ class shopController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function search(Request $request)
+    {
+
+        $search = $request->input('product');
+        if (!$search) {
+            return redirect()->route('category.index');
+        }
+        $product = Product::where('name', 'LIKE', '%' . $search . '%')->get();
+        return view('shop.shop', compact('product'));
     }
 }

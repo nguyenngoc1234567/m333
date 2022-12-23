@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -102,10 +103,9 @@ class CategoryController extends Controller
         if (!$search) {
             return redirect()->route('category.index');
         }
+        $product = Product::get();
         $categories = Category::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
-        return view('admin.category.index', compact('categories'));
+        return view('shop.shop', compact('categories','product'));
     }
-
-
 
 }

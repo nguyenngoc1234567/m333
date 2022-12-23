@@ -29,13 +29,16 @@ Route::get('index', function () {
     return view('shop.shop');
 });
 
-Route::get('/shopindex', [shopController::class, 'index'])->name('shoplogout');
+Route::get('/shopindex', [shopController::class, 'index'])->name('shop');
 Route::get('/cart', [ShopController::class, 'cart'])->name('cart.index');
 Route::get('/store/{id}', [ShopController::class, 'store'])->name('shop.store');
 Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('checkOuts');
 Route::get('/login', [UserController::class, 'viewLogin'])->name('login');
 Route::post('handdle-login', [UserController::class, 'login'])->name('handdle-login');
 Route::get('/showProduct/{id}', [ShopController::class, 'show'])->name('shop.showProduct');
+
+
+Route::get('/shop/search', [ShopController::class, 'search'])->name('shop.search');
 
 // Route::get('login',function(){
 //     return view('admin.login.login');
@@ -54,6 +57,7 @@ Route::get('/register', [UserController::class, 'register'])->name('shop.registe
 Route::post('/checkregister', [UserController::class, 'checkregister'])->name('shop.checkregister');
 
 
+
 Route::get('/home', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::post('/store', [CategoryController::class, 'store'])->name('categories.store');
@@ -67,7 +71,7 @@ Route::get('/trash', [CategoryController::class, 'trash'])->name('category.trash
 Route::put('/restoredelete/{id}', [CategoryController::class, 'restoredelete'])->name('category.restoredelete');
 Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category_destroy');
 // tìm kiếm
-Route::get('categories/search', [CategoryController::class, 'search'])->name('categories.search');
+// Route::get('categories/search', [CategoryController::class, 'search'])->name('categories.search');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/create-products', [ProductController::class, 'create'])->name('products.create');
@@ -76,6 +80,8 @@ Route::get('/show-products/{id}', [ProductController::class, 'show'])->name('pro
 Route::get('/edit-products/{id}', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/update-products/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('destroy-products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+//tim kiem
+// Route::get('products/search', [ProductController::class, 'search'])->name('products.search');
 
 
 Route::get('/productcode', [product_codesController::class, 'index'])->name('productcode.index');
@@ -85,6 +91,7 @@ Route::get('/show-productcode/{id}', [product_codesController::class, 'show'])->
 Route::get('/edit-productcode/{id}', [product_codesController::class, 'edit'])->name('productcode.edit');
 Route::put('/update-productcode/{id}', [product_codesController::class, 'update'])->name('productcode.update');
 Route::delete('destroy-productcode/{id}', [product_codesController::class, 'destroy'])->name('productcode.destroy');
+
 
 
 
