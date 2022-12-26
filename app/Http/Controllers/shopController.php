@@ -146,7 +146,7 @@ class shopController extends Controller
                 session()->put('cart', $cart);
             }
             session()->put('cart', $cart);
-            
+
         }
     }
 }
