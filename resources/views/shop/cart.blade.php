@@ -7,8 +7,8 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">sản phẩm </th>
                                 <th scope="col">Ảnh </th>
+                                <th scope="col">sản phẩm </th>
                                 <th scope="col">giá</th>
                                 <th scope="col">số lượng</th>
                                 <th scope="col">tổng</th>
@@ -49,7 +49,7 @@
                                     </td>
                                     <td class="align-middle">Vnd {{ number_format($total) }}</td>
                                     <td class="align-middle">
-                                        <button class="btn btn-sm btn-danger" ><a data-href=""
+                                        <button class="btn btn-sm btn-danger" ><a data-href="{{ route('remove.from.cart', $id) }}"
                                             class="btn btn-danger btn-sm fa fa-window-close"
                                             id="{{ $id }}">Xóa</a></button>
                                     </td>
@@ -88,6 +88,37 @@
 
             <a href="{{ route('checkOuts') }}" class="btn btn-danger pull-right">Thanh toán</a>
         </div>
-        
+
 </div>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).on('click', '.fa-window-close', function(e) {
+            e.preventDefault();
+            let id = $(this).attr('id');
+            let href = $(this).data('href');
+            let csrf = '{{ csrf_token() }}';
+            window.location.reload();
+            $.ajax({
+                url: href,
+                method: 'delete',
+                data: {
+                    _token: csrf
+                },
+                success: function(response) {
+                    $('.item-' + id).remove();
+                    alertify.set('notifier', 'position', 'top-right');
+                    alertify.success(response.status);
+                }
+            });
+        });
+    $('.btn-plus, .btn-minus').on('click', function(e) {
+        const isNegative = $(e.target).closest('.btn-minus').is('.btn-minus');
+        const input = $(e.target).closest('.input-group').find('input');
+        if (input.is('input')) {
+            input[0][isNegative ? 'stepDown' : 'stepUp']()
+        }
+    })
+</script>

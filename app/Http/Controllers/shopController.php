@@ -125,7 +125,7 @@ class shopController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
     public function search(Request $request)
     {
@@ -136,5 +136,17 @@ class shopController extends Controller
         }
         $product = Product::where('name', 'LIKE', '%' . $search . '%')->get();
         return view('shop.shop', compact('product'));
+    }
+    public function remove(Request $request)
+    {
+        if ($request->id) {
+            $cart = session()->get('cart');
+            if (isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->put('cart', $cart);
+            
+        }
     }
 }

@@ -36,6 +36,8 @@ Route::get('/checkOuts', [ShopController::class, 'checkOuts'])->name('checkOuts'
 Route::get('/login', [UserController::class, 'viewLogin'])->name('login');
 Route::post('handdle-login', [UserController::class, 'login'])->name('handdle-login');
 Route::get('/showProduct/{id}', [ShopController::class, 'show'])->name('shop.showProduct');
+// xoa giỏ hàng
+Route::delete('/remove-from-cart/{id}', [ShopController::class, 'remove'])->name('remove.from.cart');
 
 
 Route::get('/shop/search', [ShopController::class, 'search'])->name('shop.search');
