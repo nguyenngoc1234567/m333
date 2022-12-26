@@ -14,7 +14,7 @@
     .order-form .container {
       color: #8ec9f1;
       padding: 20px;
-      box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
+      box-shadow: 0 0 10px 0 rgba(209, 169, 169, 0.1);
     }
 
     .order-form-label {
@@ -39,7 +39,7 @@
     }
 
     .btn-submit:hover {
-      background-color: #090909 !important;
+      background-color: #463434 !important;
     }
   </style>
   <body>

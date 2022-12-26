@@ -33,6 +33,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->role= 1;
         $user->password = bcrypt($request->password);
         try {
             $user->save();
@@ -72,12 +73,22 @@ class UserController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
 
-            $request->session()->regenerate();
 
-            return redirect()->route('categories.index');
+            if (Auth::attempt($credentials)) {
+
+                $request->session()->regenerate();
+                // dd(Auth::user()->name);
+                if(Auth::user()->role == 0){
+                return redirect()->route('categories.index');
+            }
+            else{
+                return redirect()->route('shop');
+            }
         }
+
+        // dd($request->ga);
+
         // dd($request->all());
         return back()->withErrors([
             'email' => 'Thông tin đăng nhập được cung cấp không khớp với hồ sơ của chúng tôi.',

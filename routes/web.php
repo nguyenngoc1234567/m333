@@ -28,6 +28,11 @@ use App\Models\Category;
 Route::get('index', function () {
     return view('shop.shop');
 });
+//dangkyshop
+Route::get('dangkishop', function () {
+    return view('shop.login.dangki');
+});
+
 
 Route::get('/shopindex', [shopController::class, 'index'])->name('shop');
 Route::get('/cart', [ShopController::class, 'cart'])->name('cart.index');
