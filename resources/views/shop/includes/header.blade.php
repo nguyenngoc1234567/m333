@@ -8,6 +8,7 @@
             <p>email:nhungoclinhdan25pp@gmail.com</p>
           </div>
         </div>
+
         <div class="col-lg-5">
           <div class="float-right">
             <ul class="right_side">
@@ -22,8 +23,9 @@
                 </a>
               </li>
               <li>
-                <a href="contact.html">
+                <a href="{{ route('viewlogin') }}">
                   login shop
+
                 </a>
               </li>
             </ul>

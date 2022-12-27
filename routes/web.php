@@ -50,7 +50,7 @@ Route::get('/shop/search', [ShopController::class, 'search'])->name('shop.search
 // Route::get('login',function(){
 //     return view('admin.login.login');
 // });
-
+// đang ki shop
 Route::get('dangki', function () {
     return view('admin.login.dangki');
 });

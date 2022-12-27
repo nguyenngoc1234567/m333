@@ -59,21 +59,21 @@
                   <label class="order-form-label">Họ và tên </label>
                 </div>
                 <div class="col-12 col-sm-6">
-                  <input class="order-form-input" placeholder="First">
+                  <input class="order-form-input" placeholder="Họ ">
                 </div>
                 <div class="col-12 col-sm-6 mt-2 mt-sm-0">
-                  <input class="order-form-input" placeholder="Last">
+                  <input class="order-form-input" placeholder="Tên ">
                 </div>
               </div>
 
-              {{-- <div class="row mt-3 mx-4">
+              <div class="row mt-3 mx-4">
                 <div class="col-12">
-                  <label class="order-form-label">Đơn hàng sản phẩm</label>
+                  <label class="order-form-label">Số điện thoại </label>
                 </div>
                 <div class="col-12">
                   <input class="order-form-input" placeholder="">
                 </div>
-              </div> --}}
+              </div>
               <div class="row mt-3 mx-4">
                 <div class="col-12">
                   <label class="order-form-label">Thông tin </label>
@@ -88,7 +88,7 @@
 
               <div class="row mt-3">
                 <div class="col-12">
-                 <a href="" class="btn btn-dark d-block mx-auto btn-submit">Đặt Hàng</a>
+                 <a href="{{}}" class="btn btn-dark d-block mx-auto btn-submit">Đặt Hàng</a>
               </div>
 
             </div>
