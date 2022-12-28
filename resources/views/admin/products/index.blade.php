@@ -17,7 +17,10 @@
         <th scope="col">Giá</th>
         <th scope="col">Mô tả sản phẩm </th>
         <th scope="col">Danh mục sản phẩm  </th>
+        <th scope="col">Số lượng</th>
+
         <th scope="col">Ảnh</th>
+
 
         <th adta-breakpoints="xs">Quản lí</th>
       </tr>
@@ -30,6 +33,7 @@
             <td>{{ $team->price }}</td>
             <td>{{ $team->description }}</td>
             <td>{{ $team->category_id }}</td>
+            <td>{{ $team->amount }}</td>
             <td>
                 <img style="width:200px ; height: 165px ; border-radius:0%" src="{{ asset('public/uploads/product/'. $team->image) }}" alt=""
                     >

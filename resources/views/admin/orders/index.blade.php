@@ -1,5 +1,6 @@
 
 @extends('admin.layouts.master')
+
 @section('content')
 <h1>Danh sách chi tiêu</h1>
 <div class="container">
@@ -12,24 +13,28 @@
     </div>
     <thead>
       <tr>
-        <th scope="col">Số thứ tự</th>
-        <th scope="col">total</th>
-
-        <th adta-breakpoints="xs">Quản lí</th>
+        <th scope="col">STT</th>
+        <th scope="col">Tên Khách Hàng</th>
+            <th scope="col">Email</th>
+            <th scope="col">Số Điện Thoại</th>
+            <th scope="col">Địa Chỉ</th>
+            <th scope="col">Ngày Đặt Hàng</th>
+            <th scope="col">Tổng Tiền(Đồng)</th>
+            <th scope="col">Tùy Chọn</th>
       </tr>
     </thead>
     <tbody id="myTable">
-        @foreach ($orders as $key => $team)
+        @foreach ($items as $key=> $item)
         <tr>
-            <th scope="row">{{$key+1}}</th>
-            <td>{{ $team->total }}</td>
-            <td>
-                    <form action="" method="post">
-                        @method('DELETE')
-                        @csrf
-                        <button onclick="return confirm('Bạn có chắc chắn xóa không?');" class="btn btn-danger">Xóa</button>
-                        <a href="" class="btn btn-primary">Sửa</a>
-                    </form>
+            <th scope="row">{{++$key}}</th>
+            <td>{{$item->user->name}}</td>
+            <td>{{$item->user->email}}</td>
+            <td>{{$item->user->phone}}</td>
+            <td>{{$item->user->address}}</td>
+            <td>{{$item->date_at}}</td>
+            <td>{{number_format($item->total)}}</td>
+              <td>
+                <a  class="btn btn-info" href="">Chi tiết</a>
             </td>
           </tr>
          @endforeach
@@ -37,3 +42,9 @@
   </table>
 </div>
 @endsection
+
+
+{{-- @extends('admin.layouts.master')
+@section('content')
+<main class="page-content">
+    {{-- <a   class="btn btn-warning" href="{{route('xuat')}}">Xuất</a> --}}

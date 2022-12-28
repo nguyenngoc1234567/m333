@@ -47,6 +47,8 @@ class ProductController extends Controller
         $products->price = $request->price;
         $products->description = $request->description;
         $products->category_id = $request->category_id;
+        $products->amount = 11;
+
         if ($request->hasFile('image')) {
             $get_image = $request->file('image');
             $path = 'public\uploads\product';

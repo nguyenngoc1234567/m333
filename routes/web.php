@@ -100,7 +100,14 @@ Route::put('/update-productcode/{id}', [product_codesController::class, 'update'
 Route::delete('destroy-productcode/{id}', [product_codesController::class, 'destroy'])->name('productcode.destroy');
 
 
+Route::prefix('orders')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/detail/{id}', [OrderController::class, 'detail'])->name('order.detail');
+});
+Route::get('/cart', [ShopController::class, 'cart'])->name('shop.cart');
+Route::patch('/update-cart', [ShopController::class, 'update'])->name('update.cart');
 
+Route::post('/order', [ShopController::class, 'order'])->name('order');
 Route::get('/orders', [OrdersController::class, 'index'])->name('orders.index');
 Route::get('/create-orders', [OrdersController::class, 'create'])->name('orders.create');
 Route::post('/store-orders', [OrdersController::class, 'store'])->name('orders.store');

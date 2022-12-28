@@ -9,8 +9,9 @@ class OrdersController extends Controller
 {
     public function index()
     {
-        $orders= Orders::all();
-        return view('admin.orders.index',compact('orders'));
+        $items=Orders::paginate(5);
+
+        return view('admin.orders.index',compact('items'));
     }
 
 

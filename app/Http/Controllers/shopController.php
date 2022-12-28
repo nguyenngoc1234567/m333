@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\OrderDetail;
+use App\Models\Orders;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class shopController extends Controller
 {
@@ -57,24 +62,29 @@ class shopController extends Controller
      */
     public function store($id)
     {
+
+        // dd('1');
         $product = Product::findOrFail($id);
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
-            $cart[$id]['quantity']++;
+            $cart[$id]['amount']++;
+            // dd( $cart[$id]['amount']);
+            // dd(1230);
+
         } else {
             $cart[$id] = [
                 "nameVi" => $product->name,
-                "quantity" => 1,
+                "amount" => 1,
                 "price" => $product->price,
                 'image' => $product->image,
-                'max' => $product->quantity,
+                'max' => $product->amount,
             ];
         }
+
         session()->put('cart', $cart);
         $data = [];
         $data['cart'] = session()->has('cart');
-        // dd($data);
-        return redirect()->route('cart.index');
+        return redirect()->route('shop.cart');
     }
 
     /**
@@ -112,9 +122,27 @@ class shopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+            if ($request->id && $request->quantity) {
+                $cart = session()->get('cart');
+                $cart[$request->id]["quantity"] = $request->quantity;
+                $totalCart = number_format(($cart[$request->id]["price"]) * $cart[$request->id]["quantity"]);
+                $totalAllCart = 0;
+                $TotalAllRefreshAjax = 0;
+                foreach ($cart as $id => $details) {
+                    $totalAllCart = $details['price'] * $details['quantity'];
+                    $TotalAllRefreshAjax += $totalAllCart;
+                }
+                session()->put('cart', $cart);
+                session()->flash('message', 'Cart updated successfully');
+                return response()->json([
+                    'status' => 'cập nhật thành công',
+                    'totalCart' => '' . $totalCart,
+                    'TotalAllRefreshAjax' => '' . number_format($TotalAllRefreshAjax),
+                ]);
+            }
     }
 
     /**
@@ -148,5 +176,37 @@ class shopController extends Controller
             session()->put('cart', $cart);
 
         }
+    }
+    public function order(Request $request)
+    {
+            $id = Auth::user()->id;
+            $data = User::find($id);
+            $data->address = $request->address;
+            $data->email = $request->email;
+            $data->phone = $request->phone;
+            $data->address = $request->address;
+            $data->save();
+
+            $order = new Orders();
+            $order->user_id = Auth::user()->id;
+            $order->date_at = date('Y-m-d H:i:s');
+            $order->total = $request->totalAll;
+            $order->save();
+
+                $count_product = count($request->product_id);
+                for ($i = 0; $i < $count_product; $i++) {
+                    $orderItem = new OrderDetail();
+                    $orderItem->order_id =  $order->id;
+                    $orderItem->product_id = $request->product_id[$i];
+                    $orderItem->quantity = $request->amount[$i];
+                    $orderItem->total = $request->total[$i];
+                    $orderItem->save();
+                    session()->forget('cart');
+                    DB::table('products')
+                        ->where('id', '=', $orderItem->product_id)
+                        ->decrement('amount', $orderItem->quantity);
+                }
+
+                return redirect()->route('shop');
     }
 }

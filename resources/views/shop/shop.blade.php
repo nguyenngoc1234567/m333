@@ -20,7 +20,7 @@
                                 alt="">
                             <div class="product-action">
                                 {{-- <a href="{{ route('shop.showProduct' , $product->id) }}"><i class="tf-ion-ios-search-strong"></i></a> --}}
-                                <a class="btn btn-outline-dark btn-square" href="{{ route('shop.store', $product->id) }}"
+                                <a href="{{route('shop.store',$product->id)}}" id="{{ $product->id }}"
                                     id="{{ $product->id }}"><i class="fa fa-shopping-cart"></i></a>
                                 <a
                                     class="btn btn-outline-dark btn-square"href="{{ route('shop.showProduct', $product->id) }}"><i
