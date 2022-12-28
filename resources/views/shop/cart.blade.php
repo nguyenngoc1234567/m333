@@ -23,7 +23,7 @@
                             @if (session('cart'))
                                 @foreach (session('cart') as $id => $details)
                                     @php
-                                        $total = $details['price'] * $details['quantity'];
+                                        $total = $details['price'] * $details['amount'];
                                         $totalAll += $total;
 
                                     @endphp
@@ -39,7 +39,7 @@
                                                 <i class="fa fa-minus"></i>
                                                 </button>
                                             </div>
-                                            <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value=" {{ $details['quantity'] }}">
+                                            <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value=" {{ $details['amount'] }}">
                                             <div class="input-group-btn">
                                                 <button class="btn btn-sm btn-primary btn-plus">
                                                     <i class="fa fa-plus"></i>
