@@ -9,7 +9,7 @@
   <title>Eiser ecommerce</title>
 
   <link rel="stylesheet" href="{{asset('shop/css/bootstrap.css')}}" />
-  <link rel="stylesheet" href="{{asset('shop/vendors/linericon/style.csss')}}" />
+  <link rel="stylesheet" href="{{asset('shop/vendors/linericon/style.css')}}" />
   <link rel="stylesheet" href="{{asset('shop/css/font-awesome.min.css')}}" />
   <link rel="stylesheet" href="{{asset('shop/css/themify-icons.css')}}" />
   <link rel="stylesheet" href="{{asset('shop/css/flaticon.css')}}" />
@@ -31,23 +31,22 @@
 
 
 
-
   @include('shop.includes.footer');
 
-  <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/stellar.js"></script>
-  <script src="vendors/lightbox/simpleLightbox.min.js"></script>
-  <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
-  <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
-  <script src="vendors/isotope/isotope-min.js"></script>
-  <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-  <script src="js/jquery.ajaxchimp.min.js"></script>
-  <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
-  <script src="vendors/counter-up/jquery.counterup.js"></script>
-  <script src="js/mail-script.js"></script>
-  <script src="js/theme.js"></script>
+  <script src="{{asset('shop/js/jquery-3.2.1.min.js')}}"></script>
+  <script src="{{asset('shop/js/popper.js')}}"></script>
+  <script src="{{asset('shop/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('shop/js/stellar.js')}}"></script>
+  <script src="{{asset('shop/vendors/lightbox/simpleLightbox.min.js')}}"></script>
+  <script src="{{asset('shop/vendors/nice-select/js/jquery.nice-select.min.js')}}"></script>
+  <script src="{{asset('shop/vendors/isotope/imagesloaded.pkgd.min.js')}}"></script>
+  <script src="{{asset('shop/vendors/isotope/isotope-min.js')}}"></script>
+  <script src="{{asset('shop/vendors/owl-carousel/owl.carousel.min.js')}}"></script>
+  <script src="{{asset('shop/js/jquery.ajaxchimp.min.js')}}"></script>
+  <script src="{{asset('shop/vendors/counter-up/jquery.waypoints.min.js')}}"></script>
+  <script src="{{asset('shop/vendors/counter-up/jquery.counterup.js')}}"></script>
+  <script src="{{asset('shop/js/mail-script.js')}}"></script>
+  <script src="{{asset('shop/js/theme.js')}}"></script>
 </body>
 
 </html>

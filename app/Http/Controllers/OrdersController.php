@@ -9,8 +9,7 @@ class OrdersController extends Controller
 {
     public function index()
     {
-        $items=Orders::paginate(5);
-
+        $items=Orders::get();
         return view('admin.orders.index',compact('items'));
     }
 

@@ -32,7 +32,7 @@
             <td>{{ $team->name }}</td>
             <td>{{ $team->price }}</td>
             <td>{{ $team->description }}</td>
-            <td>{{ $team->category_id }}</td>
+            <td>{{ $team->category->name }}</td>
             <td>{{ $team->amount }}</td>
             <td>
                 <img style="width:200px ; height: 165px ; border-radius:0%" src="{{ asset('public/uploads/product/'. $team->image) }}" alt=""

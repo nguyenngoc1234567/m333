@@ -167,6 +167,7 @@ class shopController extends Controller
     }
     public function remove(Request $request)
     {
+        // dd('fsfd');
         if ($request->id) {
             $cart = session()->get('cart');
             if (isset($cart[$request->id])) {
